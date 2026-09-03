@@ -15,4 +15,45 @@
       link.addEventListener('click', (event) => event.preventDefault());
     }
   });
+
+  const downloadCount = document.querySelector('[data-download-count]');
+  if (downloadCount && repository) {
+    const cacheKey = `github-downloads:${repository}`;
+    const renderCount = (count) => {
+      downloadCount.textContent = new Intl.NumberFormat('en-US').format(count);
+    };
+
+    try {
+      const cached = JSON.parse(sessionStorage.getItem(cacheKey) || 'null');
+      if (cached && Date.now() - cached.savedAt < 15 * 60 * 1000) {
+        renderCount(cached.count);
+        return;
+      }
+    } catch (_) {
+      sessionStorage.removeItem(cacheKey);
+    }
+
+    fetch(`https://api.github.com/repos/${repository}/releases?per_page=100`, {
+      headers: { Accept: 'application/vnd.github+json' }
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error('GitHub API request failed');
+        return response.json();
+      })
+      .then((releases) => {
+        const count = releases.reduce(
+          (total, release) => total + release.assets.reduce(
+            (releaseTotal, asset) => releaseTotal + asset.download_count,
+            0
+          ),
+          0
+        );
+        renderCount(count);
+        sessionStorage.setItem(cacheKey, JSON.stringify({ count, savedAt: Date.now() }));
+      })
+      .catch(() => {
+        downloadCount.textContent = '—';
+        downloadCount.title = 'تعذر تحميل العداد مؤقتًا';
+      });
+  }
 })();
