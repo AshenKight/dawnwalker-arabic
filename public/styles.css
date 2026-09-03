@@ -69,6 +69,10 @@ body:before{content:'';position:fixed;inset:0;z-index:-1;background:linear-gradi
 .download-card li{color:#ae9a86}
 .meta{display:flex;justify-content:space-between;color:#78695c;font-size:12px;margin:auto 0 12px;direction:rtl}
 .download-card .button{width:100%}
+.download-actions{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:8px}
+.download-actions .button{padding-inline:14px;font-size:13px;white-space:nowrap}
+.button.part{border-color:rgba(139,105,80,.55);background:rgba(31,24,20,.74);color:#cdb9a6}
+.button.part:hover{border-color:#a84832;color:#fff4e7;background:rgba(72,27,24,.66)}
 .split-note{margin:15px 0 0;border:1px dashed rgba(122,94,72,.38);padding:14px 18px;color:#907e6d;text-align:center}
 .split-note bdi,.install bdi{font-family:Consolas,monospace;color:#bea68f}
 .install{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
@@ -108,6 +112,7 @@ footer strong{color:#cfb49a}
 .section,.downloads{padding-block:75px}
 .features article{min-height:230px}
 .download-card{padding:22px;min-height:440px}
+.download-actions{grid-template-columns:1fr}
 .stats dl div{padding:20px 10px}
 .stats dt{font-size:23px}
 .qa .shell{grid-template-columns:1fr}
