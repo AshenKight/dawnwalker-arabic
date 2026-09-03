@@ -1,6 +1,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:#090807}
-body{margin:0;background:#090807;color:#eee2d2;font-family:Tahoma,"Segoe UI",Arial,sans-serif}
+body{margin:0;background:#090807 url("assets/dawn.avif") center top/cover fixed no-repeat;color:#eee2d2;font-family:Tahoma,"Segoe UI",Arial,sans-serif;position:relative}
+body:before{content:'';position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(9,8,7,.68),rgba(9,8,7,.94) 68%,#090807)}
 .grain{position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.18;background:repeating-linear-gradient(115deg,transparent 0 5px,rgba(255,255,255,.018) 6px,transparent 7px 11px);mask-image:linear-gradient(#000,transparent 88%)}
 .shell{width:min(1180px,calc(100% - 40px));margin-inline:auto}
 .nav{height:92px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:10}
