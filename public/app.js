@@ -41,13 +41,13 @@
         return response.json();
       })
       .then((releases) => {
-        const count = releases.reduce(
-          (total, release) => total + release.assets.reduce(
+        const count = releases.reduce((total, release) => {
+          const firstVolumes = release.assets.filter((asset) => /\.7z\.001$/i.test(asset.name));
+          return total + firstVolumes.reduce(
             (releaseTotal, asset) => releaseTotal + asset.download_count,
             0
-          ),
-          0
-        );
+          );
+        }, 0);
         renderCount(count);
         sessionStorage.setItem(cacheKey, JSON.stringify({ count, savedAt: Date.now() }));
       })
