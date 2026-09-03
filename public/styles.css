@@ -24,6 +24,8 @@ body:before{content:'';position:fixed;inset:0;z-index:-1;background:linear-gradi
 .hero-copy{position:relative;z-index:2}
 .badges{display:flex;gap:10px;flex-wrap:wrap;color:#c9b6a2;font-size:12px;margin-bottom:28px}
 .badges span{padding:6px 10px;border:1px solid rgba(123,101,79,.45);background:rgba(0,0,0,.2)}
+.badges .download-counter{border-color:rgba(192,92,64,.72);background:rgba(93,34,25,.62);color:#f1c4a7;font-weight:700;box-shadow:0 0 24px rgba(176,63,39,.14)}
+.download-counter b{font:700 15px Georgia,serif;color:#fff1e3;direction:ltr;unicode-bidi:isolate}
 .eyebrow{color:#aa8870;font-size:12px;font-weight:800;letter-spacing:.15em;margin:0}
 .hero h1{font-size:clamp(52px,6vw,80px);line-height:1.15;letter-spacing:-.03em;margin:13px 0 0}
 .hero h1 em{display:block;font-family:Georgia,serif;font-style:normal;color:#c86145;font-size:.94em;direction:ltr;text-align:right}
@@ -39,7 +41,7 @@ body:before{content:'';position:fixed;inset:0;z-index:-1;background:linear-gradi
 .hero-art:before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#090807 0,transparent 31%),linear-gradient(0deg,rgba(9,8,7,.7),transparent 34%)}
 .hero-art i{position:absolute;inset:15px;border:1px solid rgba(205,122,86,.2);z-index:2}
 .stats{border-block:1px solid rgba(98,74,56,.25);background:rgba(12,10,9,.85)}
-.stats dl{display:grid;grid-template-columns:repeat(5,1fr);margin-block:0}
+.stats dl{display:grid;grid-template-columns:repeat(4,1fr);margin-block:0}
 .stats dl div{padding:28px 20px;border-left:1px solid rgba(111,85,64,.25)}
 .stats dl div:last-child{border:0}
 .stats dt{font:700 29px Georgia,serif;direction:ltr;text-align:right}
@@ -90,8 +92,8 @@ footer strong{color:#cfb49a}
 .hero-art{margin-left:0}
 .features,.download-grid{grid-template-columns:1fr}
 .install{grid-template-columns:1fr}
-.stats dl{grid-template-columns:repeat(3,1fr)}
-.stats dl div:nth-child(3){border-left:0}
+.stats dl{grid-template-columns:repeat(2,1fr)}
+.stats dl div:nth-child(2){border-left:0}
 .qa .shell{grid-template-columns:auto 1fr}
 .qa .shell>span{grid-column:2}
 }
@@ -107,9 +109,6 @@ footer strong{color:#cfb49a}
 .features article{min-height:230px}
 .download-card{padding:22px;min-height:440px}
 .stats dl div{padding:20px 10px}
-.stats dl{grid-template-columns:repeat(2,1fr)}
-.stats dl div:nth-child(3){border-left:1px solid rgba(111,85,64,.25)}
-.stats dl div:nth-child(even){border-left:0}
 .stats dt{font-size:23px}
 .qa .shell{grid-template-columns:1fr}
 .qa .shell>b{display:none}
