@@ -43,7 +43,7 @@
         const count = releases.reduce((total, release) => {
           const downloadablePackages = release.assets.filter((asset) =>
             /Dawnwalker-Arabic-v[\d.]+\.7z(?:\.001)?$/i.test(asset.name) ||
-            /Dawnwalker-Arabic-Auto-Installer-v[\d.]+\.zip$/i.test(asset.name)
+            /Dawnwalker-Arabic-Smart-Installer-v[\d.]+\.exe$/i.test(asset.name)
           );
           return total + downloadablePackages.reduce(
             (releaseTotal, asset) => releaseTotal + asset.download_count,
