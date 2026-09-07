@@ -3,12 +3,14 @@
   const pathParts = window.location.pathname.split('/').filter(Boolean);
   const owner = host.endsWith('.github.io') ? host.slice(0, -'.github.io'.length) : '';
   const repository = owner && pathParts.length ? `${owner}/${pathParts[0]}` : '';
-  const downloadBase = repository ? `https://github.com/${repository}/releases/latest/download` : '';
 
   document.querySelectorAll('[data-release-asset]').forEach((link) => {
     const asset = link.dataset.releaseAsset;
-    if (downloadBase && asset) {
-      link.href = `${downloadBase}/${encodeURIComponent(asset)}`;
+    const version = asset && asset.match(/-v(\d+\.\d+\.\d+)(?=\.)/);
+    if (repository && asset && version) {
+      // A versioned asset must stay attached to its own release. Using latest
+      // breaks cached pages whenever the next release has different filenames.
+      link.href = `https://github.com/${repository}/releases/download/v${version[1]}/${encodeURIComponent(asset)}`;
     } else {
       link.setAttribute('aria-disabled', 'true');
       link.addEventListener('click', (event) => event.preventDefault());
